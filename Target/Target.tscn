@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/_defaultMat.material" type="Material" id=1]
 [ext_resource path="res://Assets/pink.material" type="Material" id=2]
@@ -46,6 +46,14 @@ surfaces/2 = {
 "vertex_count": 424
 }
 
+[sub_resource type="SpatialMaterial" id=3]
+flags_unshaded = true
+albedo_color = Color( 1, 0.247059, 0.247059, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_unshaded = true
+albedo_color = Color( 0.945098, 0.776471, 0.776471, 1 )
+
 [node name="Target" type="StaticBody" groups=[
 "target",
 ]]
@@ -60,6 +68,6 @@ shape = SubResource( 1 )
 [node name="targetA" type="MeshInstance" parent="tmpParent"]
 transform = Transform( 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0 )
 mesh = SubResource( 2 )
-material/0 = null
-material/1 = null
+material/0 = SubResource( 3 )
+material/1 = SubResource( 4 )
 material/2 = null

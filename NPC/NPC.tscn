@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Assets/zombieC.png" type="Texture" id=1]
+[ext_resource path="res://Assets/skaterMaleA.png" type="Texture" id=1]
 [ext_resource path="res://Assets/skin.material" type="Material" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -159,7 +159,7 @@ bind/44/name = "right_toes"
 bind/44/bone = -1
 bind/44/pose = Transform( -0.992803, 0.00958511, -0.119373, -0.119664, -0.039574, 0.992026, 0.00478277, 0.999171, 0.0404359, -0.340618, -0.128335, -0.0149813 )
 
-[sub_resource type="SpatialMaterial" id=19]
+[sub_resource type="SpatialMaterial" id=4]
 albedo_texture = ExtResource( 1 )
 
 [sub_resource type="Animation" id=5]
@@ -4866,7 +4866,7 @@ bones/44/bound_children = [  ]
 [node name="characterMedium" type="MeshInstance" parent="Root/Skeleton"]
 mesh = SubResource( 2 )
 skin = SubResource( 3 )
-material/0 = SubResource( 19 )
+material/0 = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Attack = SubResource( 5 )

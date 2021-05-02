@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Assets/skin.material" type="Material" id=1]
-[ext_resource path="res://Assets/skaterFemaleA.png" type="Texture" id=2]
+[ext_resource path="res://Assets/criminalMaleA.png" type="Texture" id=2]
 [ext_resource path="res://Assets/blasterH.glb" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -4634,19 +4634,38 @@ animation = "Idle"
 
 [sub_resource type="AnimationNodeBlend2" id=20]
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeOneShot" id=21]
+
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "Run"
 
-[sub_resource type="AnimationNodeBlendTree" id=22]
-graph_offset = Vector2( -151.35, 65.4075 )
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Run"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "Shoot"
+
+[sub_resource type="AnimationNodeBlend2" id=25]
+filters = [ "Root/Skeleton:chest", "Root/Skeleton:head", "Root/Skeleton:hips", "Root/Skeleton:hips_ctrl", "Root/Skeleton:left_arm", "Root/Skeleton:left_foot", "Root/Skeleton:left_foot_ctrl", "Root/Skeleton:left_foot_ik", "Root/Skeleton:left_foot_roll_ctrl", "Root/Skeleton:left_fore_arm", "Root/Skeleton:left_hand", "Root/Skeleton:left_hand_index_1", "Root/Skeleton:left_hand_index_2", "Root/Skeleton:left_hand_index_3", "Root/Skeleton:left_hand_thumb_1", "Root/Skeleton:left_hand_thumb_2", "Root/Skeleton:left_heel_roll", "Root/Skeleton:left_knee_ctrl", "Root/Skeleton:left_leg", "Root/Skeleton:left_shoulder", "Root/Skeleton:left_toe_roll", "Root/Skeleton:left_toes", "Root/Skeleton:left_up_leg", "Root/Skeleton:neck", "Root/Skeleton:right_foot", "Root/Skeleton:right_foot_ctrl", "Root/Skeleton:right_foot_ik", "Root/Skeleton:right_foot_roll_ctrl", "Root/Skeleton:right_heel_roll", "Root/Skeleton:right_knee_ctrl", "Root/Skeleton:right_leg", "Root/Skeleton:right_toe_roll", "Root/Skeleton:right_toes", "Root/Skeleton:right_up_leg", "Root/Skeleton:spine", "Root/Skeleton:upper_chest" ]
+
+[sub_resource type="AnimationNodeBlendTree" id=26]
+graph_offset = Vector2( 1.16704e-05, 116.977 )
 nodes/Idle/node = SubResource( 19 )
 nodes/Idle/position = Vector2( 130, 70 )
 nodes/Idle_Run/node = SubResource( 20 )
-nodes/Idle_Run/position = Vector2( 470, 100 )
-nodes/Run/node = SubResource( 21 )
+nodes/Idle_Run/position = Vector2( 480, 100 )
+nodes/OneShot/node = SubResource( 21 )
+nodes/OneShot/position = Vector2( 840, 260 )
+nodes/Run/node = SubResource( 23 )
 nodes/Run/position = Vector2( 130, 210 )
-nodes/output/position = Vector2( 760, 150 )
-node_connections = [ "output", 0, "Idle_Run", "Idle_Run", 0, "Idle", "Idle_Run", 1, "Run" ]
+"nodes/Run 2/node" = SubResource( 22 )
+"nodes/Run 2/position" = Vector2( 0, 480 )
+nodes/Shoot/node = SubResource( 24 )
+nodes/Shoot/position = Vector2( 0, 360 )
+nodes/Shoot_Run/node = SubResource( 25 )
+nodes/Shoot_Run/position = Vector2( 320, 380 )
+nodes/output/position = Vector2( 1120, 200 )
+node_connections = [ "output", 0, "OneShot", "Idle_Run", 0, "Idle", "Idle_Run", 1, "Run", "Shoot_Run", 0, "Shoot", "Shoot_Run", 1, "Run 2", "OneShot", 0, "Idle_Run", "OneShot", 1, "Shoot_Run" ]
 
 [node name="Player" type="KinematicBody"]
 
@@ -4889,7 +4908,7 @@ skin = SubResource( 3 )
 material/0 = SubResource( 4 )
 
 [node name="BoneAttachment" type="BoneAttachment" parent="Root/Skeleton"]
-transform = Transform( -0.858237, 0.112557, 0.500771, 0.407718, -0.443153, 0.798365, 0.311777, 0.88935, 0.334438, -0.656802, 1.30698, 0.280405 )
+transform = Transform( -0.809579, 0.133815, 0.571564, 0.441213, -0.503524, 0.742833, 0.387195, 0.853554, 0.348601, -0.662473, 1.33752, 0.218911 )
 bone_name = "right_hand_thumb_1"
 
 [node name="blasterH" parent="Root/Skeleton/BoneAttachment" instance=ExtResource( 3 )]
@@ -4912,7 +4931,9 @@ anims/Shoot = SubResource( 17 )
 anims/Walk = SubResource( 18 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 22 )
+tree_root = SubResource( 26 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Idle_Run/blend_amount = 0.0
+parameters/OneShot/active = false
+parameters/Shoot_Run/blend_amount = 1.0

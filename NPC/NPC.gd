@@ -3,10 +3,12 @@ extends KinematicBody
 onready var Dialogue = get_node("/root/Game/UI/Dialogue")
 
 var dialogue = [
-	"Welcome to the game! (Press E to continue)"
-	,"Your life depends on your speed and accuracy."
-	,"Shoot the five targets and then defeat the drone before you run out of time!"
-	,"The challenge starts as soon as you press E."
+	"Thank God you're here! (Press E to continue)"
+	,"Drones are coming to terrorize my camp tonight."
+	,"Our lives depend on your speed and accuracy."
+	,"Shoot the targets and then defeat the lead drone before anymore can arrive!"
+	,"Be careful not to fall!"
+	,"Your mission starts as soon as you press E."
 ]
 
 func _ready():

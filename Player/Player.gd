@@ -2,6 +2,8 @@ extends KinematicBody
 
 onready var Camera = get_node("/root/Game/Player/Pivot/Camera")
 onready var Pivot = get_node("/root/Game/Player/Pivot")
+onready var Explosion = load("res://Explosion/Explosion.tscn")
+onready var Explosions = get_node("/root/Game/Explosions")
 
 var velocity = Vector3()
 var gravity = -9.8
@@ -34,11 +36,24 @@ func _physics_process(_delta):
 		$AnimationTree.set("parameters/Idle_Run/blend_amount", current_speed/max_speed)
 	velocity = move_and_slide(velocity, Vector3.UP, true)
 
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("shoot") and Input.is_action_pressed("forward"):
+		$AnimationTree.set("parameters/Shoot_Run/blend_amount", 0.3)
+		$AnimationTree.set("parameters/OneShot/active", true)
+		if target != null and target.is_in_group("target"):
+			var explosion = Explosion.instance()
+			Explosions.add_child(explosion)
+			explosion.global_transform.origin = $Pivot/RayCast.get_collision_point()
+			target.die()
+	
+	if Input.is_action_just_pressed("shoot") and not Input.is_action_pressed("forward"):
 		$AnimationTree.active = false
 		$AnimationPlayer.play("Shoot")
 		if target != null and target.is_in_group("target"):
+			var explosion = Explosion.instance()
+			Explosions.add_child(explosion)
+			explosion.global_transform.origin = $Pivot/RayCast.get_collision_point()
 			target.die()
+
 	if global_transform.origin.y < -15:
 		get_tree().change_scene("res://UI/Game_Over.tscn")
 	if Global.timer < 0:
