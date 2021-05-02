@@ -1,11 +1,23 @@
-# 3D-Character
+# 06-3D-RPG
+Project 06 for MSCH-C220, 1 May 2021
 
-An animated 3D character that can be used in the 3D-RPG project.
-
-Based on the [Kenney Character Assets](https://kenney.itch.io/kenney-character-assets) provided by kenney.nl. The model and animations were compiled in Blender and then imported into Godot.
+A basic 3D RPG with dialogue and interactive items.
 
 ## Implementation
-Created in Blender 2.9 and Godot 3.2
+Built using Godot 3.2.3
+Includes WASD mappings, escape to quit and space bar to shoot.
 
-## Created By
-BL-MSCH-C220-S21
+Drone textures were downloaded form cc0textures.com
+
+Music by Patrick de Arteaga (patrickdearteaga.com)
+
+Other assets were downloaded from kenney.nl
+
+## References
+None
+
+## Future Development
+None
+
+## Created by
+Liv Callahan
