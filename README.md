@@ -7,9 +7,15 @@ A basic 3D RPG with dialogue and interactive items.
 Built using Godot 3.2.3
 Includes WASD mappings, escape to quit and space bar to shoot.
 
-Drone textures were downloaded form cc0textures.com
+Drone textures were downloaded form [cc0textures.com]
 
-Music by Patrick de Arteaga (patrickdearteaga.com)
+Custom Font designed by CodeMan38 and downloaded from Google Fonts
+
+Music composed by Patrick de Arteaga [patrickdearteaga.com]
+
+The smoke particle assets were downloaded from [opengameart.org](https://opengameart.org/sites/default/files/Smoke30Frames_0.png)
+
+The explosion animation was also downloaded from [opengameart.org](https://opengameart.org/content/explosion-sheet)
 
 Other assets were downloaded from kenney.nl
 
